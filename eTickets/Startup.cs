@@ -1,4 +1,6 @@
 using eTickets.Data;
+using eTickets.Data.Services;
+using eTickets.Data.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +29,14 @@ namespace eTickets
         {
             //DbContext Config
             services.AddDbContext<AppDbContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
+            //services configuration
+            /*
+             lifetime   --->  Explanation
+             Singleton       Single instance is created
+             Scoped          Once per request within scope is created
+             Transient       Each time they requested is created
+             */
+            services.AddScoped<IActorsService,ActorsService>();
             services.AddControllersWithViews();
         }
 

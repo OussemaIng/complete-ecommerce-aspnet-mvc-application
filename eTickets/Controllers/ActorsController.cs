@@ -3,24 +3,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using eTickets.Data.Services.Interfaces;
 
 namespace eTickets.Controllers
 {
     public class ActorsController : Controller
     {
 
-        private readonly AppDbContext _context;
+        private readonly IActorsService _service;
 
-        public ActorsController(AppDbContext context)
+        public ActorsController(IActorsService service)
         {
-            _context = context;
+            _service = service;
         }
 
         //https://localhost:44330/Actors(ControllerName)/Index
         public async Task<IActionResult> Index()//ActionResult by default (Index)
         {
-            var allActors = await  _context.Actors.ToListAsync(); //get the data
-            return View(allActors);
+            var data = await _service.GetAll(); //get the data
+            return View(data);
         }
     }
 }
