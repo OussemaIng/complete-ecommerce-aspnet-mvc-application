@@ -47,7 +47,7 @@ namespace eTickets.Controllers
         {
             var actorDetails = await _service.GetByIdAsync(id);
             if (actorDetails == null)
-                return View("Not Found");
+                return View("NotFound");
             return View(actorDetails);
         }
 
@@ -56,7 +56,7 @@ namespace eTickets.Controllers
         {
             var actorDetails = await _service.GetByIdAsync(id);
             if (actorDetails == null)
-                return View("Not Found");
+                return View("NotFound");
             return View(actorDetails);
         }
         [HttpPost]
@@ -75,7 +75,7 @@ namespace eTickets.Controllers
         {
             var actorDetails = await _service.GetByIdAsync(id); //check if the actor is exist
             if (actorDetails == null)
-                return View("Not Found");
+                return View("NotFound");
             return View(actorDetails);
         }
 
@@ -84,7 +84,7 @@ namespace eTickets.Controllers
         {
             var actorDetails = await _service.GetByIdAsync(id); //check if the actor is exist
             if (actorDetails == null)
-                return View("Not Found");
+                return View("NotFound");
             await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
