@@ -1,6 +1,6 @@
 using eTickets.Data;
-using eTickets.Data.Services;
-using eTickets.Data.Services.Interfaces;
+using eTickets.Data.Base;
+using eTickets.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,8 @@ namespace eTickets
              Scoped          Once per request within scope is created
              Transient       Each time they requested is created
              */
-            services.AddScoped<IActorsService,ActorsService>();
+            //services.AddScoped<typeof(IEntityBaseRepository<T>), AppDbContext>();
+            services.AddScoped<IEntityBaseRepository<Actor>,EntityBaseRepository<Actor>>();
             services.AddControllersWithViews();
         }
 

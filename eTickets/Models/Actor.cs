@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using eTickets.Data.Base;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace eTickets.Models
 {
-    public class Actor
+    public class Actor: IEntityBase
     {
         [Key]
         public int Id { get; set; }
@@ -19,6 +20,7 @@ namespace eTickets.Models
         [Display(Name = "Biography")]
         [Required(ErrorMessage = "Biography is required")]
         public string Bio { get; set; }
+  
         //relatship
         public List<Actor_Movie> Actors_Movies { get; set; }
 
