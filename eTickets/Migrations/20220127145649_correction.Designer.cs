@@ -10,8 +10,8 @@ using eTickets.Data;
 namespace eTickets.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220127105536_Initial")]
-    partial class Initial
+    [Migration("20220127145649_correction")]
+    partial class correction
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -144,6 +144,43 @@ namespace eTickets.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Producers");
+                });
+
+            modelBuilder.Entity("eTickets.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<Guid>("ActivationCode")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EmailID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsEmailVerified")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("eTickets.Models.Actor_Movie", b =>

@@ -22,6 +22,39 @@ namespace eTickets.Data
                 //add data manually
 
                 //Cinema
+                if (!context.Users.Any()) //check if there is a Cinemas data
+                {
+                    context.Users.AddRange(new List<User>()
+                    {
+                        new User()
+                        {
+                            FirstName = "user 0",
+                            LastName = "ahmed",
+                            EmailID = "ahmed@gmail.com",
+                            DateOfBirth= DateTime.Now,
+                            Password="123456"
+                        },
+                        new User()
+                        {
+                          FirstName = "user 1",
+                            LastName = "ahmed1",
+                            EmailID = "ahmed1@gmail.com",
+                            DateOfBirth= DateTime.Now,
+                            Password="123456"
+                        },
+                        new User()
+                        {
+                         FirstName = "user 2",
+                            LastName = "ahmed2",
+                            EmailID = "ahmed2@gmail.com",
+                            DateOfBirth= DateTime.Now,
+                            Password="123456"
+                        },
+                    
+                     
+                    });
+                    context.SaveChanges();
+                }
                 if (!context.Cinemas.Any()) //check if there is a Cinemas data
                 {
                     context.Cinemas.AddRange(new List<Cinema>()

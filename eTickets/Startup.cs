@@ -40,6 +40,7 @@ namespace eTickets
             //services.AddScoped<typeof(IEntityBaseRepository<T>), AppDbContext>();
             services.AddScoped<IEntityBaseRepository<Actor>,EntityBaseRepository<Actor>>();
             services.AddScoped<IEntityBaseRepository<Producer>, EntityBaseRepository<Producer>>();
+            services.AddScoped<IEntityBaseRepository<User>, EntityBaseRepository<User>>();
             services.AddControllersWithViews();
         }
 
